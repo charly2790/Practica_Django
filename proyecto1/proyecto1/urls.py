@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from proyecto1.views import saludo,fecha_actual,probando_template
+#Paso 2) Importar la vista
+from proyecto1.views import saludo,fecha_actual,probando_template,probando_render_template
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('saludo/<nombre>/',saludo,name='saludo'),
     path('fecha_actual/',fecha_actual,name='fecha_actual'),
-    path('probandoTemplate/',probando_template)
+    path('probandoTemplate/',probando_template),
+    #Paso 3) Agregar la URL
+    path('probando-render-template',probando_render_template,name = 'probando_render_template')
 ]

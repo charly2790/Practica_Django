@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.template import Template, Context
 from datetime import datetime
 
+#**IMPORTANTE | Necesario para redireccionar templates junto con un cambio adicional en el archivo settings
+from django.shortcuts import render
+
 
 
 def saludo(request,nombre):
@@ -25,3 +28,12 @@ def probando_template(request):
     documento = plantilla.render(mi_contexto)
 
     return HttpResponse(documento)
+
+#Paso 1) Agregar la view
+def probando_render_template(request):
+
+    anios_campeon = [1986,1996,2015,2018]
+    #con datetime.now() obtengo la fecha actual    
+    context = {'nombre':'Carlos','apellido':'Barrionuevo','fecha':datetime.now(),'anios_campeon':anios_campeon}
+
+    return render(request,'template_2.html',context=context)
